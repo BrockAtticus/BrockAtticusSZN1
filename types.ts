@@ -7,9 +7,9 @@ export interface ApparelItem {
   soldOut?: boolean;
 }
 
-export type AccentColor = 'red' | 'blue' | 'green' | 'orange' | 'purple';
-export type FontFamily = 'mono' | 'sans' | 'serif';
-export type BackgroundMode = 'grunge' | 'noise' | 'clean';
+export type AccentColor = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'yellow' | 'white';
+export type FontFamily = 'mono' | 'sans' | 'serif' | 'display';
+export type BackgroundMode = 'grunge' | 'studio' | 'concrete' | 'void' | 'clean';
 
 export interface ThemeSettings {
   invertColors: boolean;
@@ -19,6 +19,7 @@ export interface ThemeSettings {
   accentColor: AccentColor;
   fontFamily: FontFamily;
   backgroundMode: BackgroundMode;
+  fontWeight: 'light' | 'normal' | 'bold';
 }
 
 export enum GeneratorState {
@@ -26,10 +27,4 @@ export enum GeneratorState {
   GENERATING = 'GENERATING',
   COMPLETE = 'COMPLETE',
   ERROR = 'ERROR'
-}
-
-export interface SketchRequest {
-  animal1: string;
-  animal2: string;
-  intensity: number;
 }

@@ -10,18 +10,24 @@ import { SketchLab } from './pages/SketchLab';
 const AppContent: React.FC = () => {
   const { settings } = useTheme();
 
-  // Map settings to CSS values
   const fontSizeClass = {
-    small: 'text-sm',
+    small: 'text-xs',
     medium: 'text-base',
-    large: 'text-lg'
+    large: 'text-xl'
   }[settings.fontSize];
 
   const fontFamily = {
     mono: '"Courier Prime", monospace',
     sans: '"Oswald", sans-serif',
-    serif: '"Times New Roman", serif',
+    serif: '"Playfair Display", serif',
+    display: '"Oswald", sans-serif', // Fallback for impact style
   }[settings.fontFamily];
+
+  const fontWeight = {
+    light: '300',
+    normal: '400',
+    bold: '900'
+  }[settings.fontWeight];
 
   const accentColor = {
     red: '#dc2626',
@@ -29,19 +35,24 @@ const AppContent: React.FC = () => {
     green: '#16a34a',
     orange: '#ea580c',
     purple: '#9333ea',
+    yellow: '#eab308',
+    white: '#ffffff',
   }[settings.accentColor];
 
   return (
     <div 
-      className={`min-h-screen transition-colors duration-300 ${fontSizeClass} ${settings.invertColors ? 'bg-black' : 'bg-[#f2f2f2]'}`}
-      style={{ fontFamily } as React.CSSProperties}
+      className={`min-h-screen transition-colors duration-300 ${fontSizeClass} ${settings.invertColors ? 'bg-black invert' : 'bg-[#f2f2f2]'}`}
+      style={{ 
+        fontFamily, 
+        fontWeight,
+      } as React.CSSProperties}
     >
-      {/* Dynamic Style Injection for Theme Overrides */}
       <style>{`
         :root {
           --theme-accent: ${accentColor};
+          --theme-weight: ${fontWeight};
         }
-        /* Override Tailwind utilities with theme accent */
+        ${settings.fontFamily === 'display' ? 'h1, h2, h3 { font-weight: 900 !important; text-transform: uppercase !important; letter-spacing: -0.05em !important; }' : ''}
         .text-red-600 { color: var(--theme-accent) !important; }
         .bg-red-600 { background-color: var(--theme-accent) !important; }
         .border-red-600 { border-color: var(--theme-accent) !important; }
@@ -64,10 +75,9 @@ const AppContent: React.FC = () => {
         </Routes>
       </main>
 
-      {/* Global decorative footer/status */}
-      <footer className="fixed bottom-0 left-0 w-full p-2 flex justify-between items-center z-30 pointer-events-none mix-blend-difference text-white text-[10px] uppercase tracking-wider">
-        <span>sys_ready</span>
-        <span>optimize_level: max</span>
+      <footer className="fixed bottom-0 left-0 w-full p-2 flex justify-between items-center z-30 pointer-events-none mix-blend-difference text-white text-[8px] uppercase tracking-[0.5em] font-mono">
+        <span>EST_2025_PROJECT</span>
+        <span>BROCKATTICUS_SZN_1_READY</span>
       </footer>
     </div>
   );

@@ -15,7 +15,8 @@ const defaultSettings: ThemeSettings = {
   highContrast: true,
   accentColor: 'red',
   fontFamily: 'mono',
-  backgroundMode: 'grunge'
+  backgroundMode: 'grunge',
+  fontWeight: 'normal',
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

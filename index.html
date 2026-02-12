@@ -7,16 +7,17 @@
     <title>BROCKATTICUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@200;400;700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap');
       
       body {
         font-family: 'Courier Prime', monospace;
-        background-color: #f2f2f2; /* Off-white concrete */
+        background-color: #f2f2f2;
         color: #111;
         cursor: crosshair;
+        margin: 0;
+        padding: 0;
       }
       
-      /* Custom Scrollbar for that raw feel */
       ::-webkit-scrollbar {
         width: 4px;
       }
@@ -38,25 +39,32 @@
         opacity: 0.05;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
-      
-      .stippling-effect {
-         filter: contrast(200%) grayscale(100%) brightness(90%);
+
+      @keyframes progress {
+        0% { transform: scaleX(0); }
+        100% { transform: scaleX(1); }
+      }
+      .animate-progress {
+        animation: progress 2s ease-in-out infinite;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react-dom": "https://esm.sh/react-dom@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+        "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
+    <!-- Crucial script tag for loading the app -->
+    <script type="module" src="index.tsx"></script>
   </body>
 </html>
